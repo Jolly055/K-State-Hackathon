@@ -9,15 +9,53 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-	<py-script># This is a sample Python script.
+	<py-script>
 		import redis
+		import taipy as tp
+		from taipy import Core, Gui, Config
 		
 		r = redis.Redis(
 		  host='redis-12608.c85.us-east-1-2.ec2.cloud.redislabs.com',
 		  port=12608,
 		  password='1ZkRUlp5Pn5onmy5GkcKvBCXl9YcRAF3')
 		
+		def build_message(name: str):
+		    return f"Hello {name}!"
+		
+		
+		name_data_node_cfg = Config.configure_data_node(id="input_name")
+		message_data_node_cfg = Config.configure_data_node(id="message")
+		build_msg_task_cfg = Config.configure_task("build_msg", build_message, name_data_node_cfg, message_data_node_cfg)
+		scenario_cfg = Config.configure_scenario("scenario", task_configs=[build_msg_task_cfg])
+		
+		if __name__ == "__main__":
+		    Core().run()
+		
+		zinedine_scenario = tp.create_scenario(scenario_cfg)
+		zinedine_scenario.input_name.write("Zinedine")
+		zinedine_scenario.submit()
+		print(zinedine_scenario.message.read())
+		
+		kylian_scenario = tp.create_scenario(scenario_cfg)
+		kylian_scenario.input_name.write("Kylian Mbappe")
+		kylian_scenario.submit()
+		print(kylian_scenario.message.read())
+		
 		print()
+		
+		max = 0
+		
+		nextExists = r.hexists(f'county{max}', 'rank')
+		print(nextExists)
+		while nextExists:
+		    max += 1
+		    nextExists = r.hexists(f'county{max}', 'rank')
+		
+		print(max)
+		
+		for i in range(max):
+		   pyList = r.hgetall(f'county{i}')
+		   print(pyList[b'county'])
 	</py-script>
   </head>
   <body>
