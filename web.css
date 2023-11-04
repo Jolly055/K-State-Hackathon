@@ -1,8 +1,8 @@
 body {
-	background-color: gold;
+	background-color: #F1AD02;
 	color: #555555;
 	font-family: Arial, Helvetica, sans-serif;
-	background-image: linear-gradient(yellow, gold);
+	background-image: linear-gradient(yellow, #F1AD02);
 	background-repeat: no-repeat;
 }
 #wrapper {
