@@ -9,10 +9,11 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-	<py-env>
-	- redis
-	- taipy
-	</py-env>
+	<py-config>
+		{
+		"packages": ["redis", "taipy"]
+		}
+	</py-config>
 	<py-script>
 		import redis
 		import taipy as tp
