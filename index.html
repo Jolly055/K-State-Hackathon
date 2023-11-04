@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -7,6 +9,16 @@
     <title>My Website</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+	<py-script># This is a sample Python script.
+		import redis
+		
+		r = redis.Redis(
+		  host='redis-12608.c85.us-east-1-2.ec2.cloud.redislabs.com',
+		  port=12608,
+		  password='1ZkRUlp5Pn5onmy5GkcKvBCXl9YcRAF3')
+		
+		print()
+	</py-script>
   </head>
   <body>
     <main>
