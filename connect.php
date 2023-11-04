@@ -4,7 +4,7 @@ pecl install redis
 
 $redis = new Redis();
 //Connecting to Redis
-$redis->connect(County-pop-db, port);
+$redis->connect(County-pop-db, 6379);
 $redis->auth(1ZkRUlp5Pn5onmy5GkcKvBCXl9YcRAF3);
 
 if ($redis->ping()) {
